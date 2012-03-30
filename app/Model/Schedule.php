@@ -24,13 +24,13 @@ class Schedule extends AppModel {
 			$targetDate = strtotime(' +1 week', $targetDate);
 		}
 
-		$general = floor(($targetDate - time()) / (60*60*24));
+		$general = ceil(($targetDate - time()) / (60*60*24));
 
 		if ($day[1] == 'ODD') {
 			$targetDate = strtotime(' +1 week', $targetDate);
 		}
 
-		$nextFortnight = floor(($targetDate - time()) / (60*60*24));
+		$nextFortnight = ceil(($targetDate - time()) / (60*60*24));
 		
 		$schedule = array(
 			"general" => $general,
