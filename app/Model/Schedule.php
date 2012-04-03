@@ -26,8 +26,8 @@ class Schedule extends AppModel {
 
 		$general = ceil(($targetDate - time()) / (60*60*24));
 
-		if ($day[1] == 'ODD') {
-			$targetDate = strtotime(' +1 week', $targetDate);
+		if ($day[1] == 'ODD' && !(date('W', $targetDate) % 2)) {
+			$targetDate = strtotime('+1 week', $targetDate);
 		}
 
 		$nextFortnight = ceil(($targetDate - time()) / (60*60*24));
