@@ -26,6 +26,8 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/:street_number/:street/:suburb', array('controller' => 'schedules', 'action' => 'view'));
+	Router::connect('/info', array('controller' => 'pages', 'action' => 'info'));
+	Router::connect('/*', array('controller' => 'pages', 'action' => 'home'));
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
