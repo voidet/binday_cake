@@ -23,7 +23,7 @@ class Schedule extends AppModel {
 		$day = explode(' ', $schedule['Schedule']['collection_day']);
 		$targetDate = strtotime(reset($day));
 
-		if ($currentTime > strtotime("19:00") && $currentTime > $targetDate) {
+		if ($currentTime > strtotime("15:00") && $currentTime > $targetDate) {
 			$targetDate = strtotime(' +1 week', $targetDate);
 		}
 
