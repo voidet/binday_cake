@@ -4,7 +4,7 @@ class Schedule extends AppModel {
 	
 	public function findAddress($address = array()) {
 
-		$currentTime = time();
+		$currentTime = strtotime('15:00 today');
 
 		$street = explode(' ', $address["street"]);
 		foreach ($street as &$v) {
