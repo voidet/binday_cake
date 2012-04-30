@@ -21,14 +21,17 @@ class Schedule extends AppModel {
 		}
 
 		$day = explode(' ', $schedule['Schedule']['collection_day']);
-		$targetDate = strtotime(reset($day));
+		$targetDate = strtotime(reset($day[0]));
 
 		if ($currentTime > strtotime("15:00:00", $targetDate) && $currentTime > $targetDate) {
 			$targetDate = strtotime(' +1 week', $targetDate);
 		}
 
 		$general = abs(ceil(($targetDate - $currentTime) / (60*60*24)));
-		if ($currentTime > strtotime("15:00:00", $targetDate) && (((date('W') % 2) && $day[1] == 'ODD') || (!(date('W') % 2) && $day[1] == 'EVEN'))) {
+		if ($currentTime > strtotime("15:00:00", $targetDate) 
+			|| ((!(date('W', $targetDate) % 2) && $day[1] == 'ODD') 
+			|| ((date('W', $targetDate) % 2) && $day[1] == 'EVEN'))
+			|| strtotime(date('D', $currentTime)) < strtotime(date('D', $targetDate))) {
 			$targetDate = strtotime('+1 week', $targetDate);
 		}
 
